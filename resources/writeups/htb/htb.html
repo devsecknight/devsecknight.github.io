@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTB Writeups — devsecknight</title>
+  <link rel="icon" type="image/png" href="../../../assets/Logo-rb.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
+  <style>
+    .tabs { display:flex; gap:1rem; margin-bottom:2rem; justify-content:center; }
+    .tab-btn { background:transparent; border:1px solid var(--border); color:var(--muted); padding:0.5rem 1.5rem; border-radius:4px; cursor:pointer; font-family:'JetBrains Mono',monospace; font-size:0.9rem; transition:all 0.2s; }
+    .tab-btn.active, .tab-btn:hover { border-color:var(--accent); color:var(--accent); }
+    
+    .filter-row { display: flex; gap: 1rem; max-width: 800px; margin: 0 auto 2rem; align-items: center; justify-content: center; flex-wrap: wrap; }
+    #search-input { flex: 1; min-width: 250px; margin-bottom: 0; }
+    #module-filter { padding: 0.8rem 1.2rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: 'Inter', sans-serif; font-size: 1rem; outline: none; cursor: pointer; }
+    #module-filter:focus { border-color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="glow-blob"></div>
+  <nav>
+    <a href="../../../index.html" class="nav-logo">
+      <img src="../../../assets/logo.png" alt="Logo" class="logo-img">devsecknight
+    </a>
+    <ul class="nav-links">
+      <li><a href="../../../index.html">Home</a></li>
+      <li><a href="../../../resources.html" class="active">Resources</a></li>
+      <li><a href="../../../courses.html">Courses</a></li>
+      <li><a href="../../../store.html">Store</a></li>
+      <li><a href="../../../social.html">Social</a></li>
+    </ul>
+      <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nav-backdrop"></div>
+
+  <section class="markdown-body" style="padding-top:8rem;min-height:calc(100vh - 100px);">
+    <div class="fade-in">
+      <p class="section-label" style="text-align: center;"><span class="num">HTB /</span> writeups</p>
+      <h2 style="text-align: center;">HackTheBox Writeups</h2>
+
+      <div class="filter-row">
+        <input type="text" id="search-input" placeholder="Search writeups by name..." />
+        <select id="module-filter">
+          <option value="">All Modules</option>
+<option value="Linux Fundamentals">Linux Fundamentals</option>
+
+        </select>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" id="tab-academy-btn" onclick="switchTab('academy', this)">Academy (Tier 0)</button>
+        <button class="tab-btn" id="tab-labs-btn" onclick="switchTab('labs', this)">Labs</button>
+      </div>
+
+      <div class="about-grid" id="writeups-grid">
+        <!-- ACADEMY CARDS -->
+      <a href="FileDescriptorsAndRedirections-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="filedescriptorsandredirections-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="card-title">File Descriptors And Redirections</div>
+        <div class="card-badge">Linux Fundamentals</div>
+      </a>
+      <a href="FileSystemManagement-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="filesystemmanagement-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="card-title">File System Management</div>
+        <div class="card-badge">Linux Fundamentals</div>
+      </a>
+      <a href="FilterContents-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="filtercontents-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="card-title">Filter Contents</div>
+        <div class="card-badge">Linux Fundamentals</div>
+      </a>
+      <a href="FindFilesAndDirectories-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="findfilesanddirectories-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="card-title">Find Files And Directories</div>
+        <div class="card-badge">Linux Fundamentals</div>
+      </a>
+      <a href="Navigation-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="navigation-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="card-title">Navigation</div>
+        <div class="card-badge">Linux Fundamentals</div>
+      </a>
+      <a href="ServiceAndProcessManagement-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="serviceandprocessmanagement-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="card-title">Service And Process Management</div>
+        <div class="card-badge">Linux Fundamentals</div>
+      </a>
+      <a href="SystemInformation-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="systeminformation-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="card-title">System Information</div>
+        <div class="card-badge">Linux Fundamentals</div>
+      </a>
+      <a href="TaskScheduling-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="taskscheduling-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="card-title">Task Scheduling</div>
+        <div class="card-badge">Linux Fundamentals</div>
+      </a>
+      <a href="UserManagement-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="usermanagement-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="card-title">User Management</div>
+        <div class="card-badge">Linux Fundamentals</div>
+      </a>
+      <a href="WorkingWithFilesAndDirectories-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="workingwithfilesanddirectories-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="card-title">Working With Files And Directories</div>
+        <div class="card-badge">Linux Fundamentals</div>
+      </a>
+      <a href="WorkingWithWebServices-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="workingwithwebservices-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="card-title">Working With Web Services</div>
+        <div class="card-badge">Linux Fundamentals</div>
+      </a>
+
+        <!-- LABS CARDS -->
+
+      </div>
+      
+      <p id="no-results-msg" style="display: none; color:var(--muted);font-family:'JetBrains Mono',monospace;padding:2rem 0; text-align: center;">No writeups match your filters.</p>
+    </div>
+  </section>
+
+  <footer>built by <span>Muhammad Hashir</span> · devsecknight · Build &bull; Secure &bull; Explore</footer>
+
+  <script src="../../../js/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("pre code").forEach(el => hljs.highlightElement(el));
+    });
+
+    let currentTab = 'academy';
+
+    function filterCards() {
+      const term = document.getElementById('search-input').value.toLowerCase();
+      const selectedModule = document.getElementById('module-filter').value;
+      
+      let visibleCount = 0;
+      
+      document.querySelectorAll('.htb-card').forEach(card => {
+        const matchesTab = card.classList.contains('tab-' + currentTab);
+        const matchesSearch = card.getAttribute('data-title').includes(term);
+        const cardModule = card.getAttribute('data-module');
+        const matchesModule = selectedModule === "" || cardModule === selectedModule;
+        
+        if (matchesTab && matchesSearch && matchesModule) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      const noResultsMsg = document.getElementById('no-results-msg');
+      if (visibleCount === 0) {
+          noResultsMsg.style.display = 'block';
+      } else {
+          noResultsMsg.style.display = 'none';
+      }
+    }
+
+    function switchTab(tab, btn) {
+      currentTab = tab;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filterCards();
+    }
+
+    document.getElementById('search-input').addEventListener('input', filterCards);
+    document.getElementById('module-filter').addEventListener('change', filterCards);
+    filterCards(); // show correct tab on load
+  </script>
+</body>
+</html>

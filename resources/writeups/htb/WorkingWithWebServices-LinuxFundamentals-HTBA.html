@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WorkingWithWebServices-LinuxFundamentals-HTBA — devsecknight</title>
+<link href="../../../assets/Logo-rb.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="../../../css/style.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="glow-blob"></div>
+<!-- NAV -->
+<nav>
+<a class="nav-logo" href="../../../index.html">
+<img alt="Logo" class="logo-img" src="../../../assets/logo.png"/>
+      devsecknight
+    </a>
+<ul class="nav-links">
+<li><a href="../../../index.html">Home</a></li>
+<li><a class="active" href="../../../resources.html">Resources</a></li>
+<li><a href="../../../courses.html">Courses</a></li>
+<li><a href="../../../store.html">Store</a></li>
+<li><a href="../../../social.html">Social</a></li>
+</ul>
+    <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nav-backdrop"></div>
+<section class="markdown-body" style="padding-top: 8rem; min-height: calc(100vh - 100px)">
+<div class="fade-in">
+<h1 id="working-with-web-services">Working with Web Services</h1>
+<details class="vpn-dropdown">
+<summary>Don't know how to connect to HTB VPN? Click here.</summary>
+<div class="dropdown-content">
+<p>Download the VPN file from HTB Academy and run the following command in the same directory:</p>
+<pre><code>sudo openvpn academy-regular.ovpn # Make sure you have openvpn installed.</code></pre>
+</div>
+</details><div class="htb-links" style="display:flex;gap:1rem;flex-wrap:wrap;margin:1.2rem 0 2rem;"><a class="btn btn-accent-ghost" href="https://referral.hackthebox.com/mzxKOJt" rel="noopener" style="text-decoration:none;" target="_blank"><svg style="width:16px;height:16px;fill:currentColor;" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"></path></svg> Join HTB Academy (Get 20 Cubes Free)</a><a class="btn btn-ghost" href="https://academy.hackthebox.com/app/module/18" rel="noopener" style="text-decoration:none;" target="_blank"><svg style="width:16px;height:16px;fill:currentColor;" viewbox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path></svg> View Module</a></div>
+<h3 id="find-a-way-to-start-a-simple-http-server-inside-pwnbox-or-your-local-vm-using-npm-submit-the-command-that-starts-the-web-server-on-port-8080-use-the-short-argument-to-specify-the-port-number">Find a way to start a simple HTTP server inside Pwnbox or your local VM using "npm". Submit the command that starts the web server on port 8080 (use the short argument to specify the port number).</h3>
+<p>The <code>npm</code> package is required if you actually want to run the HTTP server (the target machine doesn't allow that), but the command used is:</p>
+<div class="codehilite"><pre><span></span><code>http-server<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>
+</code></pre></div>
+<h3 id="find-a-way-to-start-a-simple-http-server-inside-pwnbox-or-your-local-vm-using-php-submit-the-command-that-starts-the-web-server-on-the-localhost-127001-on-port-8080">Find a way to start a simple HTTP server inside Pwnbox or your local VM using "php". Submit the command that starts the web server on the localhost (127.0.0.1) on port 8080.</h3>
+<p>Starting a local <code>php</code> server is as simple as:</p>
+<div class="codehilite"><pre><span></span><code>php<span class="w"> </span>-S<span class="w"> </span><span class="m">127</span>.0.0.1:8080
+</code></pre></div>
+</div>
+</section>
+<!-- FOOTER -->
+<footer>
+    built by <span>Muhammad Hashir</span> · devsecknight · Build • Secure • Explore
+  </footer>
+<script src="../../../js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", () => { document.querySelectorAll("pre code").forEach(el => hljs.highlightElement(el)); });</script>
+</body>
+</html>

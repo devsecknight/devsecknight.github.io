@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FindFilesAndDirectories-LinuxFundamentals-HTBA — devsecknight</title>
+<link href="../../../assets/Logo-rb.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="../../../css/style.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="glow-blob"></div>
+<!-- NAV -->
+<nav>
+<a class="nav-logo" href="../../../index.html">
+<img alt="Logo" class="logo-img" src="../../../assets/logo.png"/>
+      devsecknight
+    </a>
+<ul class="nav-links">
+<li><a href="../../../index.html">Home</a></li>
+<li><a class="active" href="../../../resources.html">Resources</a></li>
+<li><a href="../../../courses.html">Courses</a></li>
+<li><a href="../../../store.html">Store</a></li>
+<li><a href="../../../social.html">Social</a></li>
+</ul>
+    <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nav-backdrop"></div>
+<section class="markdown-body" style="padding-top: 8rem; min-height: calc(100vh - 100px)">
+<div class="fade-in">
+<h1 id="find-files-and-directories">Find Files and Directories</h1>
+<details class="vpn-dropdown">
+<summary>Don't know how to connect to HTB VPN? Click here.</summary>
+<div class="dropdown-content">
+<p>Download the VPN file from HTB Academy and run the following command in the same directory:</p>
+<pre><code>sudo openvpn academy-regular.ovpn # Make sure you have openvpn installed.</code></pre>
+</div>
+</details><div class="htb-links" style="display:flex;gap:1rem;flex-wrap:wrap;margin:1.2rem 0 2rem;"><a class="btn btn-accent-ghost" href="https://referral.hackthebox.com/mzxKOJt" rel="noopener" style="text-decoration:none;" target="_blank"><svg style="width:16px;height:16px;fill:currentColor;" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"></path></svg> Join HTB Academy (Get 20 Cubes Free)</a><a class="btn btn-ghost" href="https://academy.hackthebox.com/app/module/18" rel="noopener" style="text-decoration:none;" target="_blank"><svg style="width:16px;height:16px;fill:currentColor;" viewbox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path></svg> View Module</a></div>
+<h3 id="what-is-the-name-of-the-config-file-that-has-been-created-after-2020-03-03-and-is-smaller-than-28k-but-larger-than-25k">What is the name of the config file that has been created after 2020-03-03 and is smaller than 28k but larger than 25k?</h3>
+<p>Use the command:</p>
+<div class="codehilite"><pre><span></span><code>find<span class="w"> </span>/<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.conf"</span><span class="w"> </span>-newermt<span class="w"> </span><span class="s2">"2020-03-03"</span><span class="w"> </span>-size<span class="w"> </span>+25k<span class="w"> </span>-size<span class="w"> </span>-28k<span class="w"> </span><span class="m">2</span>&gt;/dev/null
+</code></pre></div>
+<ul>
+<li><code>-newermt "2020-03-03"</code> Filters for files modified after this specific date.</li>
+<li><code>-size +25k -size -28k</code> Filters for files strictly larger than 25KB but smaller than 28KB.</li>
+<li><code>2&gt;/dev/null</code> Hides permission errors so you only see valid results.</li>
+</ul>
+<p>Submit the file name as the answer.</p>
+<h3 id="how-many-files-exist-on-the-system-that-have-the-bak-extension">How many files exist on the system that have the ".bak" extension?</h3>
+<div class="codehilite"><pre><span></span><code>find<span class="w"> </span>/<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.bak"</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</code></pre></div>
+<ul>
+<li><code>find / -type f -name "*.bak"</code> Locates every <code>.bak</code> file starting from the root directory.</li>
+<li><code>wc -l</code> Word Count with the Lines flag, which counts the total number of lines (files) returned.</li>
+</ul>
+<p>Submit the number returned as the answer.</p>
+<h3 id="submit-the-full-path-of-the-xxd-binary">Submit the full path of the "xxd" binary.</h3>
+<p>To see the path for any binary, use the <code>which</code> command:</p>
+<div class="codehilite"><pre><span></span><code>which<span class="w"> </span>xxd
+</code></pre></div>
+<p>Submit the path as the answer.</p>
+</div>
+</section>
+<!-- FOOTER -->
+<footer>
+    built by <span>Muhammad Hashir</span> · devsecknight · Build • Secure • Explore
+  </footer>
+<script src="../../../js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", () => { document.querySelectorAll("pre code").forEach(el => hljs.highlightElement(el)); });</script>
+</body>
+</html>

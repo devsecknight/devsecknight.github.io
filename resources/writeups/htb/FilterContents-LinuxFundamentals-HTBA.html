@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FilterContents-LinuxFundamentals-HTBA — devsecknight</title>
+<link href="../../../assets/Logo-rb.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="../../../css/style.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="glow-blob"></div>
+<!-- NAV -->
+<nav>
+<a class="nav-logo" href="../../../index.html">
+<img alt="Logo" class="logo-img" src="../../../assets/logo.png"/>
+      devsecknight
+    </a>
+<ul class="nav-links">
+<li><a href="../../../index.html">Home</a></li>
+<li><a class="active" href="../../../resources.html">Resources</a></li>
+<li><a href="../../../courses.html">Courses</a></li>
+<li><a href="../../../store.html">Store</a></li>
+<li><a href="../../../social.html">Social</a></li>
+</ul>
+    <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nav-backdrop"></div>
+<section class="markdown-body" style="padding-top: 8rem; min-height: calc(100vh - 100px)">
+<div class="fade-in">
+<h1 id="filter-contents">Filter Contents</h1>
+<details class="vpn-dropdown">
+<summary>Don't know how to connect to HTB VPN? Click here.</summary>
+<div class="dropdown-content">
+<p>Download the VPN file from HTB Academy and run the following command in the same directory:</p>
+<pre><code>sudo openvpn academy-regular.ovpn # Make sure you have openvpn installed.</code></pre>
+</div>
+</details><div class="htb-links" style="display:flex;gap:1rem;flex-wrap:wrap;margin:1.2rem 0 2rem;"><a class="btn btn-accent-ghost" href="https://referral.hackthebox.com/mzxKOJt" rel="noopener" style="text-decoration:none;" target="_blank"><svg style="width:16px;height:16px;fill:currentColor;" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"></path></svg> Join HTB Academy (Get 20 Cubes Free)</a><a class="btn btn-ghost" href="https://academy.hackthebox.com/app/module/18" rel="noopener" style="text-decoration:none;" target="_blank"><svg style="width:16px;height:16px;fill:currentColor;" viewbox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path></svg> View Module</a></div>
+<h3 id="how-many-services-are-listening-on-the-target-system-on-all-interfaces-not-on-localhost-and-ipv4-only">How many services are listening on the target system on all interfaces? (Not on localhost and IPv4 only)</h3>
+<p>Open a terminal and use <code>netstat</code> to find the listening services on all interfaces:</p>
+<div class="codehilite"><pre><span></span><code>netstat<span class="w"> </span>-tln<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>tcp6<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">"127.0.0."</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>LISTEN<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</code></pre></div>
+<ul>
+<li><code>-t</code> → Show TCP connections only.</li>
+<li><code>-l</code> → Show only listening ports (servers waiting for connections).</li>
+<li><code>-n</code> → Show numeric IP addresses and port numbers (don't resolve names).</li>
+</ul>
+<h3 id="determine-what-user-the-proftpd-server-is-running-under-submit-the-username-as-the-answer">Determine what user the ProFTPd server is running under. Submit the username as the answer.</h3>
+<p>To check the username, use the <code>ps</code> command:</p>
+<div class="codehilite"><pre><span></span><code>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>proftpd
+</code></pre></div>
+<p>The first word of the output is the username.</p>
+<h3 id="use-curl-from-your-pwnbox-not-the-target-machine-to-obtain-the-source-code-of-the-httpswwwinlanefreightcom-website-and-filter-all-unique-paths-httpswwwinlanefreightcomdirectory-or-anotherdirectory-of-that-domain-submit-the-number-of-these-paths-as-the-answer">Use cURL from your Pwnbox (not the target machine) to obtain the source code of the "https://www.inlanefreight.com" website and filter all unique paths ("https://www.inlanefreight.com/directory" or "/another/directory") of that domain. Submit the number of these paths as the answer.</h3>
+<p>Use the <code>curl</code> command to get the code then filter it via <code>tr</code> and <code>grep</code>:</p>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>https://www.inlanefreight.com<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s2">" "</span><span class="w"> </span><span class="s2">"\n"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-Eo<span class="w"> </span><span class="s2">"https://www.inlanefreight.com[^\"']*"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-u<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</code></pre></div>
+<ul>
+<li><code>curl https://www.inlanefreight.com</code>: Fetches the raw HTML source code of the website.</li>
+<li><code>tr " " "\n"</code>: Splits strings by replacing spaces with newlines to ensure each URL/path sits on its own line.</li>
+<li><code>grep -Eo "https://www.inlanefreight.com[^\"']*"</code>: Isolates only strings that start with the target domain, extracting everything up to a closing quote.</li>
+<li><code>sort -u</code>: Alphabetically sorts the lines and removes duplicates to retain only unique paths.</li>
+<li><code>wc -l</code>: Counts the final number of total lines outputted.</li>
+</ul>
+<blockquote>
+<p>The <code>-E</code> flag for <code>grep</code> used to tell that it is going to use Enhanced RegEx.</p>
+</blockquote>
+</div>
+</section>
+<!-- FOOTER -->
+<footer>
+    built by <span>Muhammad Hashir</span> · devsecknight · Build • Secure • Explore
+  </footer>
+<script src="../../../js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", () => { document.querySelectorAll("pre code").forEach(el => hljs.highlightElement(el)); });</script>
+</body>
+</html>
