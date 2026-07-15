@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HTB Writeups — devsecknight</title>
-  <link rel="icon" type="image/png" href="../../../assets/Logo-rb.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../../css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HTB Writeups — devsecknight | DevSecKnight</title>
+<link href="../../../assets/Logo-rb.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="../../../css/style.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" rel="stylesheet"/>
+<style>
     .tabs { display:flex; gap:1rem; margin-bottom:2rem; justify-content:center; }
     .tab-btn { background:transparent; border:1px solid var(--border); color:var(--muted); padding:0.5rem 1.5rem; border-radius:4px; cursor:pointer; font-family:'JetBrains Mono',monospace; font-size:0.9rem; transition:all 0.2s; }
     .tab-btn.active, .tab-btn:hover { border-color:var(--accent); color:var(--accent); }
@@ -20,116 +20,106 @@
     #module-filter { padding: 0.8rem 1.2rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: 'Inter', sans-serif; font-size: 1rem; outline: none; cursor: pointer; }
     #module-filter:focus { border-color: var(--accent); }
   </style>
-</head>
+<meta content="Cybersecurity portfolio and writeups by DevSecKnight. Exploring, securing, and building." name="description"/></head>
 <body>
-  <div class="glow-blob"></div>
-  <nav>
-    <a href="../../../index.html" class="nav-logo">
-      <img src="../../../assets/logo.png" alt="Logo" class="logo-img">devsecknight
+<div class="glow-blob"></div>
+<nav>
+<a class="nav-logo" href="../../../index.html">
+<img alt="Logo" class="logo-img" src="../../../assets/logo.png"/>devsecknight
     </a>
-    <ul class="nav-links">
-      <li><a href="../../../index.html">Home</a></li>
-      <li><a href="../../../resources.html" class="active">Resources</a></li>
-      <li><a href="../../../courses.html">Courses</a></li>
-      <li><a href="../../../store.html">Store</a></li>
-      <li><a href="../../../social.html">Social</a></li>
-    </ul>
-      <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-  <div class="nav-backdrop"></div>
-
-  <section class="markdown-body" style="padding-top:8rem;min-height:calc(100vh - 100px);">
-    <div class="fade-in">
-      <p class="section-label" style="text-align: center;"><span class="num">HTB /</span> writeups</p>
-      <h2 style="text-align: center;">HackTheBox Writeups</h2>
-
-      <div class="filter-row">
-        <input type="text" id="search-input" placeholder="Search writeups by name..." />
-        <select id="module-filter">
-          <option value="">All Modules</option>
+<ul class="nav-links">
+<li><a href="../../../index.html">Home</a></li>
+<li><a class="active" href="../../../resources.html">Resources</a></li>
+<li><a href="../../../courses.html">Courses</a></li>
+<li><a href="../../../store.html">Store</a></li>
+<li><a href="../../../social.html">Social</a></li>
+</ul>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-hamburger">
+<span></span><span></span><span></span>
+</button>
+</nav>
+<div class="nav-backdrop"></div>
+<section class="markdown-body" style="padding-top:8rem;min-height:calc(100vh - 100px);">
+<div class="fade-in">
+<p class="section-label" style="text-align: center;"><span class="num">HTB /</span> writeups</p>
+<h2 style="text-align: center;">HackTheBox Writeups</h2>
+<div class="filter-row">
+<input id="search-input" placeholder="Search writeups by name..." type="text"/>
+<select id="module-filter">
+<option value="">All Modules</option>
 <option value="Linux Fundamentals">Linux Fundamentals</option>
+</select>
+</div>
+<div class="tabs">
+<button class="tab-btn active" id="tab-academy-btn" onclick="switchTab('academy', this)">Academy (Tier 0)</button>
+<button class="tab-btn" id="tab-labs-btn" onclick="switchTab('labs', this)">Labs</button>
+</div>
+<div class="about-grid" id="writeups-grid">
 
-        </select>
-      </div>
+<a class="about-card htb-card tab-academy" data-module="Linux Fundamentals" data-title="filedescriptorsandredirections-linuxfundamentals-htba" href="FileDescriptorsAndRedirections-LinuxFundamentals-HTBA.html" style="text-decoration:none;">
+<div class="card-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg></div>
+<div class="card-title">File Descriptors And Redirections</div>
+<div class="card-badge">Linux Fundamentals</div>
+</a>
+<a class="about-card htb-card tab-academy" data-module="Linux Fundamentals" data-title="filesystemmanagement-linuxfundamentals-htba" href="FileSystemManagement-LinuxFundamentals-HTBA.html" style="text-decoration:none;">
+<div class="card-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg></div>
+<div class="card-title">File System Management</div>
+<div class="card-badge">Linux Fundamentals</div>
+</a>
+<a class="about-card htb-card tab-academy" data-module="Linux Fundamentals" data-title="filtercontents-linuxfundamentals-htba" href="FilterContents-LinuxFundamentals-HTBA.html" style="text-decoration:none;">
+<div class="card-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg></div>
+<div class="card-title">Filter Contents</div>
+<div class="card-badge">Linux Fundamentals</div>
+</a>
+<a class="about-card htb-card tab-academy" data-module="Linux Fundamentals" data-title="findfilesanddirectories-linuxfundamentals-htba" href="FindFilesAndDirectories-LinuxFundamentals-HTBA.html" style="text-decoration:none;">
+<div class="card-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg></div>
+<div class="card-title">Find Files And Directories</div>
+<div class="card-badge">Linux Fundamentals</div>
+</a>
+<a class="about-card htb-card tab-academy" data-module="Linux Fundamentals" data-title="navigation-linuxfundamentals-htba" href="Navigation-LinuxFundamentals-HTBA.html" style="text-decoration:none;">
+<div class="card-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg></div>
+<div class="card-title">Navigation</div>
+<div class="card-badge">Linux Fundamentals</div>
+</a>
+<a class="about-card htb-card tab-academy" data-module="Linux Fundamentals" data-title="serviceandprocessmanagement-linuxfundamentals-htba" href="ServiceAndProcessManagement-LinuxFundamentals-HTBA.html" style="text-decoration:none;">
+<div class="card-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg></div>
+<div class="card-title">Service And Process Management</div>
+<div class="card-badge">Linux Fundamentals</div>
+</a>
+<a class="about-card htb-card tab-academy" data-module="Linux Fundamentals" data-title="systeminformation-linuxfundamentals-htba" href="SystemInformation-LinuxFundamentals-HTBA.html" style="text-decoration:none;">
+<div class="card-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg></div>
+<div class="card-title">System Information</div>
+<div class="card-badge">Linux Fundamentals</div>
+</a>
+<a class="about-card htb-card tab-academy" data-module="Linux Fundamentals" data-title="taskscheduling-linuxfundamentals-htba" href="TaskScheduling-LinuxFundamentals-HTBA.html" style="text-decoration:none;">
+<div class="card-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg></div>
+<div class="card-title">Task Scheduling</div>
+<div class="card-badge">Linux Fundamentals</div>
+</a>
+<a class="about-card htb-card tab-academy" data-module="Linux Fundamentals" data-title="usermanagement-linuxfundamentals-htba" href="UserManagement-LinuxFundamentals-HTBA.html" style="text-decoration:none;">
+<div class="card-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg></div>
+<div class="card-title">User Management</div>
+<div class="card-badge">Linux Fundamentals</div>
+</a>
+<a class="about-card htb-card tab-academy" data-module="Linux Fundamentals" data-title="workingwithfilesanddirectories-linuxfundamentals-htba" href="WorkingWithFilesAndDirectories-LinuxFundamentals-HTBA.html" style="text-decoration:none;">
+<div class="card-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg></div>
+<div class="card-title">Working With Files And Directories</div>
+<div class="card-badge">Linux Fundamentals</div>
+</a>
+<a class="about-card htb-card tab-academy" data-module="Linux Fundamentals" data-title="workingwithwebservices-linuxfundamentals-htba" href="WorkingWithWebServices-LinuxFundamentals-HTBA.html" style="text-decoration:none;">
+<div class="card-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg></div>
+<div class="card-title">Working With Web Services</div>
+<div class="card-badge">Linux Fundamentals</div>
+</a>
 
-      <div class="tabs">
-        <button class="tab-btn active" id="tab-academy-btn" onclick="switchTab('academy', this)">Academy (Tier 0)</button>
-        <button class="tab-btn" id="tab-labs-btn" onclick="switchTab('labs', this)">Labs</button>
-      </div>
-
-      <div class="about-grid" id="writeups-grid">
-        <!-- ACADEMY CARDS -->
-      <a href="FileDescriptorsAndRedirections-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="filedescriptorsandredirections-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
-        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <div class="card-title">File Descriptors And Redirections</div>
-        <div class="card-badge">Linux Fundamentals</div>
-      </a>
-      <a href="FileSystemManagement-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="filesystemmanagement-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
-        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <div class="card-title">File System Management</div>
-        <div class="card-badge">Linux Fundamentals</div>
-      </a>
-      <a href="FilterContents-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="filtercontents-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
-        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <div class="card-title">Filter Contents</div>
-        <div class="card-badge">Linux Fundamentals</div>
-      </a>
-      <a href="FindFilesAndDirectories-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="findfilesanddirectories-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
-        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <div class="card-title">Find Files And Directories</div>
-        <div class="card-badge">Linux Fundamentals</div>
-      </a>
-      <a href="Navigation-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="navigation-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
-        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <div class="card-title">Navigation</div>
-        <div class="card-badge">Linux Fundamentals</div>
-      </a>
-      <a href="ServiceAndProcessManagement-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="serviceandprocessmanagement-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
-        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <div class="card-title">Service And Process Management</div>
-        <div class="card-badge">Linux Fundamentals</div>
-      </a>
-      <a href="SystemInformation-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="systeminformation-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
-        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <div class="card-title">System Information</div>
-        <div class="card-badge">Linux Fundamentals</div>
-      </a>
-      <a href="TaskScheduling-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="taskscheduling-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
-        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <div class="card-title">Task Scheduling</div>
-        <div class="card-badge">Linux Fundamentals</div>
-      </a>
-      <a href="UserManagement-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="usermanagement-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
-        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <div class="card-title">User Management</div>
-        <div class="card-badge">Linux Fundamentals</div>
-      </a>
-      <a href="WorkingWithFilesAndDirectories-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="workingwithfilesanddirectories-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
-        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <div class="card-title">Working With Files And Directories</div>
-        <div class="card-badge">Linux Fundamentals</div>
-      </a>
-      <a href="WorkingWithWebServices-LinuxFundamentals-HTBA.html" class="about-card htb-card tab-academy" data-title="workingwithwebservices-linuxfundamentals-htba" data-module="Linux Fundamentals" style="text-decoration:none;">
-        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <div class="card-title">Working With Web Services</div>
-        <div class="card-badge">Linux Fundamentals</div>
-      </a>
-
-        <!-- LABS CARDS -->
-
-      </div>
-      
-      <p id="no-results-msg" style="display: none; color:var(--muted);font-family:'JetBrains Mono',monospace;padding:2rem 0; text-align: center;">No writeups match your filters.</p>
-    </div>
-  </section>
-
-  <footer>built by <span>Muhammad Hashir</span> · devsecknight · Build &bull; Secure &bull; Explore</footer>
-
-  <script src="../../../js/script.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script>
+</div>
+<p id="no-results-msg" style="display: none; color:var(--muted);font-family:'JetBrains Mono',monospace;padding:2rem 0; text-align: center;">No writeups match your filters.</p>
+</div>
+</section>
+<footer>built by <span>Muhammad Hashir</span> · devsecknight · Build • Secure • Explore</footer>
+<script src="../../../js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>
     document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll("pre code").forEach(el => hljs.highlightElement(el));
     });
