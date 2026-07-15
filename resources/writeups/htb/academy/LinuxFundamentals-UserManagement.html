@@ -4,36 +4,36 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Navigation | DevSecKnight</title>
-<link href="../../../assets/Logo-rb.png" rel="icon" type="image/png"/>
+<title>User Management | DevSecKnight</title>
+<link href="../../../../assets/Logo-rb.png" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="../../../css/style.css" rel="stylesheet"/>
+<link href="../../../../css/style.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" rel="stylesheet"/>
 <meta content="Download the VPN file from HTB Academy and run the following command in the same directory:..." name="description"/></head>
 <body>
 <div class="glow-blob"></div>
 <nav>
-<a class="nav-logo" href="../../../index.html">
-<img alt="Logo" class="logo-img" src="../../../assets/logo.png"/>
+<a class="nav-logo" href="../../../../index.html">
+<img alt="Logo" class="logo-img" src="../../../../assets/logo.png"/>
       devsecknight
     </a>
 <ul class="nav-links">
-<li><a href="../../../index.html">Home</a></li>
-<li><a class="active" href="../../../resources.html">Resources</a></li>
-<li><a href="../../../courses.html">Courses</a></li>
-<li><a href="../../../store.html">Store</a></li>
-<li><a href="../../../social.html">Social</a></li>
+<li><a href="../../../../index.html">Home</a></li>
+<li><a class="active" href="../../../../resources.html">Resources</a></li>
+<li><a href="../../../../courses.html">Courses</a></li>
+<li><a href="../../../../store.html">Store</a></li>
+<li><a href="../../../../social.html">Social</a></li>
 </ul>
 <button aria-expanded="false" aria-label="Toggle navigation" class="nav-hamburger">
 <span></span><span></span><span></span>
 </button>
 </nav>
 <div class="nav-backdrop"></div>
-<header class="writeup-hero"><h1>Navigation</h1><h2>Linux Fundamentals</h2></header>
+<header class="writeup-hero"><h1>User Management</h1><h2>Hack The Box Academy Module: Linux Fundamentals</h2></header>
 <section class="markdown-body" style="padding-top: 8rem; min-height: calc(100vh - 100px)">
-<div class="fade-in"><p>The section <strong>Navigation</strong> belongs to <a href="#" rel="noopener" target="_blank">Linux Fundamentals</a> module.</p>
+<div class="fade-in"><p>The section <strong>User Management</strong> belongs to <a href="#" rel="noopener" target="_blank">Linux Fundamentals</a> module.</p>
 <details class="vpn-dropdown">
 <summary>Don't know how to connect to HTB VPN? Click here.</summary>
 <div class="dropdown-content">
@@ -41,23 +41,18 @@
 <pre><code>sudo openvpn academy-regular.ovpn # Make sure you have openvpn installed.</code></pre>
 </div>
 </details>
-<h3 id="what-is-the-name-of-the-hidden-history-file-in-the-htb-users-home-directory">What is the name of the hidden "history" file in the htb-user's home directory?</h3>
-<p>To see hidden files in Linux, we use the <code>-a</code> flag with <code>ls</code> command:</p>
-<div class="codehilite"><pre><span></span><code>ls<span class="w"> </span>-a
-</code></pre></div>
-<p>Submit the name of the file containing the word "history".</p>
-<h3 id="what-is-the-index-number-of-the-sudoers-file-in-the-etc-directory">What is the index number of the "sudoers" file in the "/etc" directory?</h3>
-<p>Index is shown with the <code>i</code> flag of <code>ls</code> command. To check directly the index number of <code>/etc/sudoers</code> type:</p>
-<div class="codehilite"><pre><span></span><code>ls<span class="w"> </span>-i<span class="w"> </span>/etc/sudoers
-</code></pre></div>
-<p>The shown number is the index. Submit the shown number.</p>
-<p><strong>Stuck? See detailed solution video:</strong></p>
+<h3 id="which-option-needs-to-be-set-to-create-a-home-directory-for-a-new-user-using-the-useradd-command">Which option needs to be set to create a home directory for a new user using the "useradd" command?</h3>
+<p>The <code>-m</code> flag is used with the <code>useradd</code> command to create a home directory for the new user.</p>
+<h3 id="which-option-needs-to-be-set-to-lock-a-user-account-using-the-usermod-command-long-version-of-the-option">Which option needs to be set to lock a user account using the "usermod" command? (long version of the option)</h3>
+<p>To lock a user account we use the <code>--lock</code> flag with the <code>usermod</code> command.</p>
+<h3 id="which-option-needs-to-be-set-to-execute-a-command-as-a-different-user-using-the-su-command-long-version-of-the-option">Which option needs to be set to execute a command as a different user using the "su" command? (long version of the option)</h3>
+<p>To execute commands as a different user, use the <code>--command</code> flag with the <code>su</code> command.</p>
 </div>
 </section>
 <footer>
     built by <span>Muhammad Hashir</span> · devsecknight · Build • Secure • Explore
   </footer>
-<script src="../../../js/script.js"></script>
+<script src="../../../../js/script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script>document.addEventListener("DOMContentLoaded", () => { document.querySelectorAll("pre code").forEach(el => hljs.highlightElement(el)); });</script>
 <div class="notification-banner">

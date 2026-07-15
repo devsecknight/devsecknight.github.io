@@ -41,57 +41,57 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devsecknight.com/resources/writeups/htb/FileDescriptorsAndRedirections-LinuxFundamentals-HTBA.html</loc>
+    <loc>https://devsecknight.com/resources/writeups/htb/academy/LinuxFundamentals-FileDescriptorsAndRedirections.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devsecknight.com/resources/writeups/htb/FileSystemManagement-LinuxFundamentals-HTBA.html</loc>
+    <loc>https://devsecknight.com/resources/writeups/htb/academy/LinuxFundamentals-FileSystemManagement.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devsecknight.com/resources/writeups/htb/FilterContents-LinuxFundamentals-HTBA.html</loc>
+    <loc>https://devsecknight.com/resources/writeups/htb/academy/LinuxFundamentals-FilterContents.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devsecknight.com/resources/writeups/htb/FindFilesAndDirectories-LinuxFundamentals-HTBA.html</loc>
+    <loc>https://devsecknight.com/resources/writeups/htb/academy/LinuxFundamentals-FindFilesAndDirectories.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devsecknight.com/resources/writeups/htb/Navigation-LinuxFundamentals-HTBA.html</loc>
+    <loc>https://devsecknight.com/resources/writeups/htb/academy/LinuxFundamentals-Navigation.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devsecknight.com/resources/writeups/htb/ServiceAndProcessManagement-LinuxFundamentals-HTBA.html</loc>
+    <loc>https://devsecknight.com/resources/writeups/htb/academy/LinuxFundamentals-ServiceAndProcessManagement.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devsecknight.com/resources/writeups/htb/SystemInformation-LinuxFundamentals-HTBA.html</loc>
+    <loc>https://devsecknight.com/resources/writeups/htb/academy/LinuxFundamentals-SystemInformation.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devsecknight.com/resources/writeups/htb/TaskScheduling-LinuxFundamentals-HTBA.html</loc>
+    <loc>https://devsecknight.com/resources/writeups/htb/academy/LinuxFundamentals-TaskScheduling.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devsecknight.com/resources/writeups/htb/UserManagement-LinuxFundamentals-HTBA.html</loc>
+    <loc>https://devsecknight.com/resources/writeups/htb/academy/LinuxFundamentals-UserManagement.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devsecknight.com/resources/writeups/htb/WorkingWithFilesAndDirectories-LinuxFundamentals-HTBA.html</loc>
+    <loc>https://devsecknight.com/resources/writeups/htb/academy/LinuxFundamentals-WorkingWithFilesAndDirectories.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devsecknight.com/resources/writeups/htb/WorkingWithWebServices-LinuxFundamentals-HTBA.html</loc>
+    <loc>https://devsecknight.com/resources/writeups/htb/academy/LinuxFundamentals-WorkingWithWebServices.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
