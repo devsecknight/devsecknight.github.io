@@ -86,3 +86,20 @@ if (blob) {
   // Insert toggle before sidebar inside wrapper
   wrapper.insertBefore(btn, sidebar);
 })();
+
+// ── NOTIFICATION BANNER DELAY ──
+document.addEventListener("DOMContentLoaded", function () {
+  const banner = document.querySelector('.notification-banner');
+  if (banner) {
+    const closeBtn = document.createElement('button');
+    closeBtn.innerHTML = '&times;';
+    closeBtn.className = 'notif-close';
+    closeBtn.setAttribute('aria-label', 'Close notification');
+    closeBtn.onclick = () => banner.classList.remove('show');
+    banner.appendChild(closeBtn);
+
+    setTimeout(() => {
+      banner.classList.add('show');
+    }, 3000);
+  }
+});
