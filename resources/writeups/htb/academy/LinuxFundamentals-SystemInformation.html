@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="../../../../css/style.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" rel="stylesheet"/>
-<meta content="Download the VPN file from HTB Academy and run the following command in the same directory:..." name="description"/></head>
+<meta content="Learn how to gather system information on Linux using commands like uname, echo, and ifconfig. HTB Academy Linux Fundamentals writeup by DevSecKnight." name="description"/></head>
 <body>
 <div class="glow-blob"></div>
 <nav>
@@ -35,47 +35,124 @@
 <section class="markdown-body" style="padding-top: 8rem; min-height: calc(100vh - 100px)">
 <div class="fade-in"><p>The section <strong>System Information</strong> belongs to <a href="#" rel="noopener" target="_blank">Linux Fundamentals</a> module.</p>
 <details class="vpn-dropdown">
-<summary>Don't know how to connect to HTB VPN? Click here.</summary>
+<summary>Don't know how to connect to HTB VPN &amp; SSH? Click here.</summary>
 <div class="dropdown-content">
-<p>Download the VPN file from HTB Academy and run the following command in the same directory:</p>
-<pre><code>sudo openvpn academy-regular.ovpn # Make sure you have openvpn installed.</code></pre>
+<p>Download the VPN configuration file from HTB Academy and run the following command in the same directory:</p>
+<pre><code class="language-bash">sudo openvpn academy-regular.ovpn # Make sure OpenVPN is installed.</code></pre>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>sudo</code> → Runs the command with administrator (root) privileges.</li>
+<li><code>openvpn</code> → Starts the OpenVPN client.</li>
+<li><code>academy-regular.ovpn</code> → The VPN configuration file that contains the settings required to connect to the HTB Academy VPN.</li>
+</ul>
+<p>Once the VPN connection is established, connect to the spawned target machine using SSH:</p>
+<pre><code class="language-bash">ssh htb-student@&lt;ip-address&gt; # Use password: HTB_@cademy_stdnt!</code></pre>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>ssh</code> → Starts a Secure Shell (SSH) session to connect to a remote system.</li>
+<li><code>htb-student</code> → The username used to log in.</li>
+<li><code>@</code> → Separates the username from the target host.</li>
+<li><code>&lt;ip-address&gt;</code> → The IP address of the target machine.</li>
+</ul>
+<p>After successfully authenticating, you will be presented with the terminal of the target machine.</p>
 </div>
 </details>
-<p>First <code>ssh</code> to the spawned IP address with the following command:</p>
-<div class="codehilite"><pre><span></span><code>ssh<span class="w"> </span>htb-student@&lt;ip-address&gt;<span class="w"> </span><span class="c1"># Use password: HTB_@cademy_stdnt!</span>
-</code></pre></div>
-<p>You should now be at the target's terminal prompt.</p>
+
 <h3 id="find-out-the-machine-hardware-name-and-submit-it-as-the-answer">Find out the machine hardware name and submit it as the answer.</h3>
-<p>Type:</p>
+<p>The <code>uname</code> command displays information about the operating system and kernel. Using the <code>-m</code> option displays the machine's hardware architecture.</p>
 <div class="codehilite"><pre><span></span><code>uname<span class="w"> </span>-m
 </code></pre></div>
-<p>And submit the output as answer.</p>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>uname</code> → Displays system information.</li>
+<li><code>-m</code> → Displays the machine hardware architecture.</li>
+</ul>
+<p>Submit the output as the answer.</p>
+
 <h3 id="what-is-the-path-to-htb-students-home-directory">What is the path to htb-student's home directory?</h3>
-<p>Type the following command in the terminal (you can also use <code>pwd</code> if you did not yet changed the directory):</p>
+<p>Environment variables store information about the current user and system. The <code>HOME</code> environment variable contains the absolute path to the current user's home directory.</p>
 <div class="codehilite"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="nv">$HOME</span>
 </code></pre></div>
-<p>And submit the output as answer.</p>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>echo</code> → Displays the value passed to it.</li>
+<li><code>$HOME</code> → Stores the path to the current user's home directory.</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> If you are currently inside your home directory, you can also use the <code>pwd</code> command to display its path.</p>
+</blockquote>
+<p>Submit the output as the answer.</p>
+
 <h3 id="what-is-the-path-to-the-htb-students-mail">What is the path to the htb-student's mail?</h3>
-<p>Type the following command in the terminal:</p>
+<p>The <code>MAIL</code> environment variable stores the path to the current user's mailbox.</p>
 <div class="codehilite"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="nv">$MAIL</span>
 </code></pre></div>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>echo</code> → Displays the value passed to it.</li>
+<li><code>$MAIL</code> → Stores the path to the current user's mailbox.</li>
+</ul>
+<p>Submit the output as the answer.</p>
+
 <h3 id="which-shell-is-specified-for-the-htb-student-user">Which shell is specified for the htb-student user?</h3>
-<p>Type the following command to get the shell path:</p>
+<p>The <code>SHELL</code> environment variable stores the path to the user's default login shell.</p>
 <div class="codehilite"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="nv">$SHELL</span>
 </code></pre></div>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>echo</code> → Displays the value passed to it.</li>
+<li><code>$SHELL</code> → Stores the path to the user's default shell.</li>
+</ul>
+<p>Submit the output as the answer.</p>
+
 <h3 id="which-kernel-release-is-installed-on-the-system-format-1223">Which kernel release is installed on the system? (Format: 1.22.3)</h3>
-<p>Use the <code>uname</code> command to get the kernel release:</p>
+<p>The <code>uname</code> command can also display the Linux kernel release. The <code>-r</code> option prints the currently running kernel version.</p>
 <div class="codehilite"><pre><span></span><code>uname<span class="w"> </span>-r
 </code></pre></div>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>uname</code> → Displays system information.</li>
+<li><code>-r</code> → Displays the kernel release version.</li>
+</ul>
+<p>Submit the output as the answer.</p>
+
 <h3 id="what-is-the-name-of-the-network-interface-that-mtu-is-set-to-1500">What is the name of the network interface that MTU is set to 1500?</h3>
-<p>Use the <code>ifconfig</code> command for this:</p>
+<p>The <code>ifconfig</code> command displays information about the network interfaces configured on the system, including their IP addresses, status, and MTU (Maximum Transmission Unit).</p>
 <div class="codehilite"><pre><span></span><code>ifconfig
 </code></pre></div>
-<p>then manually search for the line containing <code>mtu 1500</code> or use the following command:</p>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>ifconfig</code> → Displays information about the system's network interfaces.</li>
+</ul>
+<p>Manually look for the interface whose configuration contains <code>mtu 1500</code>.</p>
+<p>Alternatively, use the following command to filter the output:</p>
 <div class="codehilite"><pre><span></span><code>ifconfig<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"mtu 1500"</span>
 </code></pre></div>
-<p>The name of the interface is in the beginning of the line.</p>
-<p><strong>Stuck? See detailed solution video:</strong></p>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>ifconfig</code> → Displays information about the system's network interfaces.</li>
+<li><code>|</code> → Sends the output of the first command to the next command.</li>
+<li><code>grep</code> → Searches for lines containing the specified text.</li>
+<li><code>"mtu 1500"</code> → Searches for lines that contain the text <code>mtu 1500</code>.</li>
+</ul>
+<p>The name of the network interface appears at the beginning of the matching line.</p>
+<blockquote>
+<p><strong>Note:</strong> <code>ifconfig</code> is considered a legacy networking tool on many modern Linux distributions. The <code>ip</code> command is the recommended replacement, although <code>ifconfig</code> is still commonly encountered in labs, CTFs, and older systems.</p>
+</blockquote>
+
+<hr style="margin: 2.5rem 0; border: none; border-top: 1px solid rgba(255,255,255,0.1);"/>
+<h3 id="still-stuck-watch-video">Still Stuck? Watch Video</h3>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; margin-top: 1.25rem;">
+  <iframe
+    src="https://www.youtube.com/embed/i4AwAoKEqyg"
+    title="System Information - Linux Fundamentals | HTB Academy Walkthrough"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px;">
+  </iframe>
+</div>
+
 </div>
 </section>
 <footer>
