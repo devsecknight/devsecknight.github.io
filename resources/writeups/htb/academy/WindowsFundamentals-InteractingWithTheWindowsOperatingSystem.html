@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Interacting with the Windows Operating System | DevSecKnight</title>
+<link href="../../../../assets/Logo-rb.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="../../../../css/style.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" rel="stylesheet"/>
+<meta content="Learn how to use PowerShell aliases and execution policies on Windows. HTB Academy Windows Fundamentals writeup by DevSecKnight." name="description"/></head>
+<body>
+<div class="glow-blob"></div>
+<nav>
+<a class="nav-logo" href="../../../../index.html">
+<img alt="Logo" class="logo-img" src="../../../../assets/logo.png"/>
+      devsecknight
+    </a>
+<ul class="nav-links">
+<li><a href="../../../../index.html">Home</a></li>
+<li><a class="active" href="../../../../resources.html">Resources</a></li>
+<li><a href="../../../../courses.html">Courses</a></li>
+<li><a href="../../../../store.html">Store</a></li>
+<li><a href="../../../../social.html">Social</a></li>
+</ul>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-hamburger">
+<span></span><span></span><span></span>
+</button>
+</nav>
+<div class="nav-backdrop"></div>
+<header class="writeup-hero"><h1>Interacting with the Windows Operating System</h1><h2>Hack The Box Academy Module: Windows Fundamentals</h2></header>
+<section class="markdown-body" style="padding-top: 8rem; min-height: calc(100vh - 100px)">
+<div class="fade-in"><p>The section <strong>Interacting with the Windows Operating System</strong> belongs to <a href="#" rel="noopener" target="_blank">Windows Fundamentals</a> module.</p>
+<details class="vpn-dropdown">
+<summary>Don't know how to connect to HTB VPN &amp; RDP? Click here.</summary>
+<div class="dropdown-content">
+<p>Download the VPN configuration file from HTB Academy and run the following command in the same directory:</p>
+<pre><code class="language-bash">sudo openvpn academy-regular.ovpn # Make sure OpenVPN is installed.</code></pre>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>sudo</code> → Runs the command with administrator (root) privileges.</li>
+<li><code>openvpn</code> → Starts the OpenVPN client.</li>
+<li><code>academy-regular.ovpn</code> → The VPN configuration file that contains the settings required to connect to the HTB Academy VPN.</li>
+</ul>
+<p>Once the VPN connection is established, connect to the spawned target machine using Remote Desktop Protocol (RDP):</p>
+<pre><code class="language-bash">xfreerdp /v:&lt;ip-address&gt; /u:htb-student /p:'Academy_WinFun!' # Install xfreerdp if needed.</code></pre>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>xfreerdp</code> → A free and open-source RDP client for Linux.</li>
+<li><code>/v:&lt;ip-address&gt;</code> → Specifies the IP address of the target Windows machine.</li>
+<li><code>/u:htb-student</code> → The username used to log in.</li>
+<li><code>/p:'HTB_@cademy_stdnt!'</code> → The password for the user account.</li>
+</ul>
+<p>After successfully authenticating, you will be presented with the desktop of the target Windows machine.</p>
+</div>
+</details>
+
+<h3 id="what-is-the-alias-set-for-the-ipconfig-exe-command">What is the alias set for the <code>ipconfig.exe</code> command?</h3>
+<p>To find the alias associated with <code>ipconfig.exe</code>, run:</p>
+<div class="codehilite"><pre><span></span><code>Get-Alias | findstr ipconfig
+</code></pre></div>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>Get-Alias</code> → A PowerShell cmdlet that lists all aliases available in the current PowerShell session. An <strong>alias</strong> is an alternate name assigned to a command or executable, allowing it to be invoked using a shorter or more familiar name.</li>
+<li><code>|</code> → The <strong>pipeline</strong> operator. Passes the output of <code>Get-Alias</code> as input to the next command.</li>
+<li><code>findstr</code> → A Windows command-line utility used to search for a specific string within text.</li>
+<li><code>ipconfig</code> → The search string used by <code>findstr</code>. Filters the output to display only entries related to <code>ipconfig.exe</code>.</li>
+</ul>
+<p>The command displays the alias mapped to <code>ipconfig.exe</code>. Submit the alias as your answer.</p>
+<blockquote>
+<p><strong>Note:</strong> PowerShell aliases provide alternative names for commands. They do not create new commands or change their functionality.</p>
+</blockquote>
+
+<h3 id="find-the-execution-policy-set-for-the-localmachine-scope">Find the Execution Policy set for the LocalMachine scope.</h3>
+<p>To view the execution policies configured for each scope, run:</p>
+<div class="codehilite"><pre><span></span><code>Get-ExecutionPolicy -List | findstr LocalMachine
+</code></pre></div>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>Get-ExecutionPolicy</code> → A PowerShell cmdlet that displays the execution policy configured on the system. An <strong>Execution Policy</strong> is a PowerShell security feature that determines the conditions under which scripts can be executed.</li>
+<li><code>-List</code> → Displays the execution policy configured for every available scope.</li>
+<li><code>|</code> → Passes the output of <code>Get-ExecutionPolicy</code> to the next command.</li>
+<li><code>findstr</code> → Searches the command output for a specific string.</li>
+<li><code>LocalMachine</code> → Filters the output to display only the execution policy configured for the <strong>LocalMachine</strong> scope.</li>
+</ul>
+<p>The <strong>LocalMachine</strong> scope applies to all users on the system and stores its configuration in the local computer settings.</p>
+<p>Submit the execution policy configured for the <strong>LocalMachine</strong> scope as your answer.</p>
+
+<hr style="margin: 2.5rem 0; border: none; border-top: 1px solid rgba(255,255,255,0.1);"/>
+<h3 id="still-stuck-watch-video">Still Stuck? Watch Video</h3>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; margin-top: 1.25rem;">
+  <iframe
+    src="https://www.youtube.com/embed/4qhS5r--G1s"
+    title="Interacting with the Windows Operating System - Windows Fundamentals | HTB Academy Walkthrough"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px;">
+  </iframe>
+</div>
+
+</div>
+</section>
+<footer>
+    built by <span>Muhammad Hashir</span> · devsecknight · Build • Secure • Explore
+  </footer>
+<script src="../../../../js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", () => { document.querySelectorAll("pre code").forEach(el => hljs.highlightElement(el)); });</script>
+<div class="notification-banner">
+<p>Join HTB Academy (Get 20 Cubes Free)</p>
+<a class="btn btn-accent-ghost" href="https://referral.hackthebox.com/mzxKOJt" rel="noopener" target="_blank">Join Now</a>
+</div>
+</body>
+</html>

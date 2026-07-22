@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skills Assessment | DevSecKnight</title>
+<link href="../../../../assets/Logo-rb.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="../../../../css/style.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" rel="stylesheet"/>
+<meta content="Complete the Windows Fundamentals skills assessment by configuring shared folders, NTFS permissions, users, groups, and retrieving SIDs. HTB Academy writeup by DevSecKnight." name="description"/></head>
+<body>
+<div class="glow-blob"></div>
+<nav>
+<a class="nav-logo" href="../../../../index.html">
+<img alt="Logo" class="logo-img" src="../../../../assets/logo.png"/>
+      devsecknight
+    </a>
+<ul class="nav-links">
+<li><a href="../../../../index.html">Home</a></li>
+<li><a class="active" href="../../../../resources.html">Resources</a></li>
+<li><a href="../../../../courses.html">Courses</a></li>
+<li><a href="../../../../store.html">Store</a></li>
+<li><a href="../../../../social.html">Social</a></li>
+</ul>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-hamburger">
+<span></span><span></span><span></span>
+</button>
+</nav>
+<div class="nav-backdrop"></div>
+<header class="writeup-hero"><h1>Skills Assessment</h1><h2>Hack The Box Academy Module: Windows Fundamentals</h2></header>
+<section class="markdown-body" style="padding-top: 8rem; min-height: calc(100vh - 100px)">
+<div class="fade-in"><p>The section <strong>Skills Assessment</strong> belongs to <a href="#" rel="noopener" target="_blank">Windows Fundamentals</a> module.</p>
+<details class="vpn-dropdown">
+<summary>Don't know how to connect to HTB VPN &amp; RDP? Click here.</summary>
+<div class="dropdown-content">
+<p>Download the VPN configuration file from HTB Academy and run the following command in the same directory:</p>
+<pre><code class="language-bash">sudo openvpn academy-regular.ovpn # Make sure OpenVPN is installed.</code></pre>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>sudo</code> → Runs the command with administrator (root) privileges.</li>
+<li><code>openvpn</code> → Starts the OpenVPN client.</li>
+<li><code>academy-regular.ovpn</code> → The VPN configuration file that contains the settings required to connect to the HTB Academy VPN.</li>
+</ul>
+<p>Once the VPN connection is established, connect to the spawned target machine using Remote Desktop Protocol (RDP):</p>
+<pre><code class="language-bash">xfreerdp /v:&lt;ip-address&gt; /u:htb-student /p:'Academy_WinFun!' # Install xfreerdp if needed.</code></pre>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>xfreerdp</code> → A free and open-source RDP client for Linux.</li>
+<li><code>/v:&lt;ip-address&gt;</code> → Specifies the IP address of the target Windows machine.</li>
+<li><code>/u:htb-student</code> → The username used to log in.</li>
+<li><code>/p:'HTB_@cademy_stdnt!'</code> → The password for the user account.</li>
+</ul>
+<p>After successfully authenticating, you will be presented with the desktop of the target Windows machine.</p>
+</div>
+</details>
+
+<h3 id="required-steps">Required Steps</h3>
+
+<h4 id="creating-a-shared-folder-named-company-data">Creating a Shared Folder Named Company Data</h4>
+<ol>
+<li>On the Desktop, create a new folder named <strong>Company Data</strong>.</li>
+<li>Right-click the folder and select <strong>Properties</strong>.</li>
+<li>Open the <strong>Sharing</strong> tab.</li>
+<li>Click <strong>Advanced Sharing</strong>.</li>
+<li>Check <strong>Share this folder</strong>, then click <strong>Apply</strong> and <strong>OK</strong>.</li>
+</ol>
+
+<h4 id="creating-a-subfolder-named-hr">Creating a Subfolder Named HR</h4>
+<p>Open the <strong>Company Data</strong> folder and create a new subfolder named <strong>HR</strong>.</p>
+
+<h4 id="creating-a-user-named-jim">Creating a User Named Jim</h4>
+<ol>
+<li>Right-click the <strong>Start</strong> button and select <strong>Computer Management</strong>.</li>
+<li>Navigate to <strong>Local Users and Groups → Users</strong>.</li>
+<li>Right-click inside the right pane and select <strong>New User</strong>.</li>
+<li>Create a user named <strong>Jim</strong>.</li>
+<li>Uncheck <strong>User must change password at next logon</strong>.</li>
+<li>Click <strong>Create</strong>.</li>
+</ol>
+
+<h4 id="creating-a-security-group-named-hr">Creating a Security Group Named HR</h4>
+<ol>
+<li>In <strong>Computer Management</strong>, navigate to <strong>Local Users and Groups → Groups</strong>.</li>
+<li>Right-click and select <strong>New Group</strong>.</li>
+<li>Enter <strong>HR</strong> as the group name.</li>
+<li>Click <strong>Create</strong>.</li>
+</ol>
+<p>A <strong>security group</strong> is a collection of user accounts that can be assigned permissions as a single entity, simplifying access management.</p>
+
+<h4 id="adding-jim-to-the-hr-security-group">Adding Jim to the HR Security Group</h4>
+<ol>
+<li>Open the <strong>HR</strong> group's properties.</li>
+<li>Click <strong>Add</strong>.</li>
+<li>Enter <strong>Jim</strong> under <strong>Enter the object names to select</strong>.</li>
+<li>Click <strong>Check Names</strong> to resolve the account.</li>
+<li>Click <strong>OK</strong>.</li>
+</ol>
+
+<h4 id="configuring-share-permissions-for-company-data">Configuring Share Permissions for Company Data</h4>
+<ol>
+<li>Right-click <strong>Company Data</strong> and select <strong>Properties</strong>.</li>
+<li>Open the <strong>Sharing</strong> tab and click <strong>Advanced Sharing</strong>.</li>
+<li>Click <strong>Permissions</strong>.</li>
+<li>Remove the default <strong>Everyone</strong> group.</li>
+<li>Click <strong>Add</strong>, enter <strong>HR</strong>, and click <strong>Check Names</strong>.</li>
+<li>Grant the following <strong>Allow</strong> permissions: <strong>Change</strong> and <strong>Read</strong>.</li>
+<li>Click <strong>Apply</strong> and <strong>OK</strong>.</li>
+</ol>
+<p><strong>Share permissions</strong> control access to folders when they are accessed over the network using SMB.</p>
+
+<h4 id="configuring-ntfs-permissions-for-company-data">Configuring NTFS Permissions for Company Data</h4>
+<ol>
+<li>Open the <strong>Security</strong> tab.</li>
+<li>Click <strong>Advanced</strong>.</li>
+<li>Click <strong>Disable inheritance</strong>.</li>
+<li>Select <strong>Remove all inherited permissions from this object</strong>.</li>
+<li>Click <strong>Add</strong>, select the <strong>HR</strong> group, and grant the following basic permissions: Modify, Read &amp; execute, List folder contents, Read, Write.</li>
+<li>Click <strong>OK</strong>, then <strong>Apply</strong>.</li>
+</ol>
+<p><strong>NTFS permissions</strong> control access to files and folders stored on an NTFS-formatted drive. Unlike Share permissions, they apply whether the resource is accessed locally or over the network.</p>
+
+<h4 id="configuring-ntfs-permissions-for-the-hr-subfolder">Configuring NTFS Permissions for the HR Subfolder</h4>
+<p>Repeat the same process for the <strong>HR</strong> subfolder:</p>
+<ol>
+<li>Open <strong>Properties → Security → Advanced</strong>.</li>
+<li>Click <strong>Disable inheritance</strong>.</li>
+<li>Choose <strong>Remove all inherited permissions from this object</strong>.</li>
+<li>Add the <strong>HR</strong> security group.</li>
+<li>Grant the following permissions: Modify, Read &amp; execute, List folder contents, Read, Write.</li>
+<li>Click <strong>Apply</strong> and <strong>OK</strong>.</li>
+</ol>
+
+<h3 id="what-is-the-name-of-the-group-present-in-company-data-share-acl">What is the name of the group that is present in the Company Data Share Permissions ACL by default?</h3>
+<p>By default, the <strong>Everyone</strong> group is present in the Share Permissions <strong>Access Control List (ACL)</strong>.</p>
+
+<h3 id="what-is-the-name-of-the-tab-to-configure-ntfs-permissions">What is the name of the tab that allows you to configure NTFS permissions?</h3>
+<p>NTFS permissions are configured from the <strong>Security</strong> tab.</p>
+
+<h3 id="what-is-the-name-of-the-service-associated-with-windows-update">What is the name of the service associated with Windows Update?</h3>
+<p>To locate the Windows Update service, run:</p>
+<div class="codehilite"><pre><span></span><code>Get-Service | Where-Object {$_.DisplayName -like "*Windows Update*"}
+</code></pre></div>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>Get-Service</code> → Retrieves all services installed on the system.</li>
+<li><code>|</code> → Passes the output of <code>Get-Service</code> to the next command.</li>
+<li><code>Where-Object</code> → Filters objects based on a specified condition.</li>
+<li><code>$_.DisplayName</code> → Refers to the <strong>DisplayName</strong> property of each service object currently being processed.</li>
+<li><code>-like</code> → Performs wildcard pattern matching.</li>
+<li><code>"*Windows Update*"</code> → Matches services whose display name contains <strong>Windows Update</strong>.</li>
+</ul>
+<p>The command displays the Windows Update service. Submit its <strong>service name</strong> as your answer.</p>
+
+<h3 id="list-the-sid-associated-with-the-user-account-jim">List the SID associated with the user account Jim.</h3>
+<div class="codehilite"><pre><span></span><code>Get-LocalUser -Name Jim | Select-Object SID
+</code></pre></div>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>Get-LocalUser</code> → Retrieves local user accounts on the system.</li>
+<li><code>-Name Jim</code> → Specifies the user account named <strong>Jim</strong>.</li>
+<li><code>|</code> → Passes the user object to the next command.</li>
+<li><code>Select-Object</code> → Displays only the specified properties from an object.</li>
+<li><code>SID</code> → The <strong>Security Identifier (SID)</strong> assigned to the user account.</li>
+</ul>
+<p>A <strong>Security Identifier (SID)</strong> is a unique value assigned to every user, group, or computer account in Windows. Windows uses SIDs internally to identify security principals rather than relying on account names.</p>
+<p>Submit the displayed SID as your answer.</p>
+
+<h3 id="list-the-sid-associated-with-the-hr-security-group">List the SID associated with the HR security group.</h3>
+<div class="codehilite"><pre><span></span><code>Get-LocalGroup -Name HR | Select-Object SID
+</code></pre></div>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>Get-LocalGroup</code> → Retrieves local security groups on the system.</li>
+<li><code>-Name HR</code> → Specifies the <strong>HR</strong> security group.</li>
+<li><code>|</code> → Passes the group object to the next command.</li>
+<li><code>Select-Object</code> → Displays only the specified properties from an object.</li>
+<li><code>SID</code> → The <strong>Security Identifier (SID)</strong> assigned to the security group.</li>
+</ul>
+<p>Submit the displayed SID as your answer.</p>
+
+<hr style="margin: 2.5rem 0; border: none; border-top: 1px solid rgba(255,255,255,0.1);"/>
+<h3 id="still-stuck-watch-video">Still Stuck? Watch Video</h3>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; margin-top: 1.25rem;">
+  <iframe
+    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+    title="Skills Assessment - Windows Fundamentals | HTB Academy Walkthrough"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px;">
+  </iframe>
+</div>
+
+</div>
+</section>
+<footer>
+    built by <span>Muhammad Hashir</span> · devsecknight · Build • Secure • Explore
+  </footer>
+<script src="../../../../js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", () => { document.querySelectorAll("pre code").forEach(el => hljs.highlightElement(el)); });</script>
+<div class="notification-banner">
+<p>Join HTB Academy (Get 20 Cubes Free)</p>
+<a class="btn btn-accent-ghost" href="https://referral.hackthebox.com/mzxKOJt" rel="noopener" target="_blank">Join Now</a>
+</div>
+</body>
+</html>

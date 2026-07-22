@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Introduction to Windows | DevSecKnight</title>
+<link href="../../../../assets/Logo-rb.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="../../../../css/style.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" rel="stylesheet"/>
+<meta content="Learn how to identify the Windows build number and NT version using PowerShell and WMI. HTB Academy Windows Fundamentals writeup by DevSecKnight." name="description"/></head>
+<body>
+<div class="glow-blob"></div>
+<nav>
+<a class="nav-logo" href="../../../../index.html">
+<img alt="Logo" class="logo-img" src="../../../../assets/logo.png"/>
+      devsecknight
+    </a>
+<ul class="nav-links">
+<li><a href="../../../../index.html">Home</a></li>
+<li><a class="active" href="../../../../resources.html">Resources</a></li>
+<li><a href="../../../../courses.html">Courses</a></li>
+<li><a href="../../../../store.html">Store</a></li>
+<li><a href="../../../../social.html">Social</a></li>
+</ul>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-hamburger">
+<span></span><span></span><span></span>
+</button>
+</nav>
+<div class="nav-backdrop"></div>
+<header class="writeup-hero"><h1>Introduction to Windows</h1><h2>Hack The Box Academy Module: Windows Fundamentals</h2></header>
+<section class="markdown-body" style="padding-top: 8rem; min-height: calc(100vh - 100px)">
+<div class="fade-in"><p>The section <strong>Introduction to Windows</strong> belongs to <a href="#" rel="noopener" target="_blank">Windows Fundamentals</a> module.</p>
+<details class="vpn-dropdown">
+<summary>Don't know how to connect to HTB VPN &amp; RDP? Click here.</summary>
+<div class="dropdown-content">
+<p>Download the VPN configuration file from HTB Academy and run the following command in the same directory:</p>
+<pre><code class="language-bash">sudo openvpn academy-regular.ovpn # Make sure OpenVPN is installed.</code></pre>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>sudo</code> → Runs the command with administrator (root) privileges.</li>
+<li><code>openvpn</code> → Starts the OpenVPN client.</li>
+<li><code>academy-regular.ovpn</code> → The VPN configuration file that contains the settings required to connect to the HTB Academy VPN.</li>
+</ul>
+<p>Once the VPN connection is established, connect to the spawned target machine using Remote Desktop Protocol (RDP):</p>
+<pre><code class="language-bash">xfreerdp /v:&lt;ip-address&gt; /u:htb-student /p:'Academy_WinFun!' # Install xfreerdp if needed.</code></pre>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>xfreerdp</code> → A free and open-source RDP client for Linux.</li>
+<li><code>/v:&lt;ip-address&gt;</code> → Specifies the IP address of the target Windows machine.</li>
+<li><code>/u:htb-student</code> → The username used to log in.</li>
+<li><code>/p:'HTB_@cademy_stdnt!'</code> → The password for the user account.</li>
+</ul>
+<p>After successfully authenticating, you will be presented with the desktop of the target Windows machine.</p>
+</div>
+</details>
+
+<h3 id="what-is-the-build-number-of-the-target-workstation">What is the Build Number of the target workstation?</h3>
+<p>The <code>Get-WmiObject</code> cmdlet retrieves information from <strong>Windows Management Instrumentation (WMI)</strong>.</p>
+<p><strong>Windows Management Instrumentation (WMI)</strong> is a Windows management framework that provides access to information about the operating system, hardware, installed software, services, and other system components.</p>
+<p>In this command, the <code>Win32_OperatingSystem</code> WMI class is queried to retrieve information about the installed operating system. The output is then filtered to display only the <strong>BuildNumber</strong> property, which represents the build number of the installed Windows operating system.</p>
+<div class="codehilite"><pre><span></span><code>Get-WmiObject -Class Win32_OperatingSystem | Select BuildNumber
+</code></pre></div>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>Get-WmiObject</code> → Retrieves management information from Windows Management Instrumentation (WMI).</li>
+<li><code>-Class</code> → Specifies the WMI class to query.</li>
+<li><code>Win32_OperatingSystem</code> → A WMI class that contains information about the installed Windows operating system.</li>
+<li><code>|</code> → The pipeline operator. Passes the output of the first command as input to the next command.</li>
+<li><code>Select</code> → Displays only the specified property from the command output.</li>
+<li><code>BuildNumber</code> → The operating system's build number.</li>
+</ul>
+<p>Submit the value of the <strong>BuildNumber</strong> property as your answer.</p>
+
+<h3 id="which-windows-nt-version-is-installed-on-the-workstation">Which Windows NT version is installed on the workstation? (i.e. Windows X - case sensitive)</h3>
+<p>The same WMI class can also be used to retrieve the Windows version. Instead of displaying the <strong>BuildNumber</strong> property, this command selects the <strong>Version</strong> property, which contains the Windows NT version number of the installed operating system.</p>
+<div class="codehilite"><pre><span></span><code>Get-WmiObject -Class Win32_OperatingSystem | Select Version
+</code></pre></div>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>Get-WmiObject</code> → Retrieves management information from Windows Management Instrumentation (WMI).</li>
+<li><code>-Class</code> → Specifies the WMI class to query.</li>
+<li><code>Win32_OperatingSystem</code> → A WMI class that contains information about the installed Windows operating system.</li>
+<li><code>|</code> → The pipeline operator. Passes the output of the first command as input to the next command.</li>
+<li><code>Select</code> → Displays only the specified property from the command output.</li>
+<li><code>Version</code> → Displays the Windows NT version of the installed operating system.</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> The <code>Version</code> property returns the Windows NT version number rather than the Windows marketing name. If the challenge expects the Windows release name (for example, <strong>Windows 10</strong>), map the NT version to its corresponding Windows release before submitting your answer.</p>
+</blockquote>
+
+<hr style="margin: 2.5rem 0; border: none; border-top: 1px solid rgba(255,255,255,0.1);"/>
+<h3 id="still-stuck-watch-video">Still Stuck? Watch Video</h3>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; margin-top: 1.25rem;">
+  <iframe
+    src="https://www.youtube.com/embed/QqlPNFUl8ec"
+    title="Introduction to Windows - Windows Fundamentals | HTB Academy Walkthrough"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px;">
+  </iframe>
+</div>
+
+</div>
+</section>
+<footer>
+    built by <span>Muhammad Hashir</span> · devsecknight · Build • Secure • Explore
+  </footer>
+<script src="../../../../js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", () => { document.querySelectorAll("pre code").forEach(el => hljs.highlightElement(el)); });</script>
+<div class="notification-banner">
+<p>Join HTB Academy (Get 20 Cubes Free)</p>
+<a class="btn btn-accent-ghost" href="https://referral.hackthebox.com/mzxKOJt" rel="noopener" target="_blank">Join Now</a>
+</div>
+</body>
+</html>

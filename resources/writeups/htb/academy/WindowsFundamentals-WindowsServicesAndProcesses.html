@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Windows Services &amp; Processes | DevSecKnight</title>
+<link href="../../../../assets/Logo-rb.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="../../../../css/style.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" rel="stylesheet"/>
+<meta content="Learn how to enumerate Windows services and processes using PowerShell and sc.exe. HTB Academy Windows Fundamentals writeup by DevSecKnight." name="description"/></head>
+<body>
+<div class="glow-blob"></div>
+<nav>
+<a class="nav-logo" href="../../../../index.html">
+<img alt="Logo" class="logo-img" src="../../../../assets/logo.png"/>
+      devsecknight
+    </a>
+<ul class="nav-links">
+<li><a href="../../../../index.html">Home</a></li>
+<li><a class="active" href="../../../../resources.html">Resources</a></li>
+<li><a href="../../../../courses.html">Courses</a></li>
+<li><a href="../../../../store.html">Store</a></li>
+<li><a href="../../../../social.html">Social</a></li>
+</ul>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-hamburger">
+<span></span><span></span><span></span>
+</button>
+</nav>
+<div class="nav-backdrop"></div>
+<header class="writeup-hero"><h1>Windows Services &amp; Processes</h1><h2>Hack The Box Academy Module: Windows Fundamentals</h2></header>
+<section class="markdown-body" style="padding-top: 8rem; min-height: calc(100vh - 100px)">
+<div class="fade-in"><p>The section <strong>Windows Services &amp; Processes</strong> belongs to <a href="#" rel="noopener" target="_blank">Windows Fundamentals</a> module.</p>
+<details class="vpn-dropdown">
+<summary>Don't know how to connect to HTB VPN &amp; RDP? Click here.</summary>
+<div class="dropdown-content">
+<p>Download the VPN configuration file from HTB Academy and run the following command in the same directory:</p>
+<pre><code class="language-bash">sudo openvpn academy-regular.ovpn # Make sure OpenVPN is installed.</code></pre>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>sudo</code> → Runs the command with administrator (root) privileges.</li>
+<li><code>openvpn</code> → Starts the OpenVPN client.</li>
+<li><code>academy-regular.ovpn</code> → The VPN configuration file that contains the settings required to connect to the HTB Academy VPN.</li>
+</ul>
+<p>Once the VPN connection is established, connect to the spawned target machine using Remote Desktop Protocol (RDP):</p>
+<pre><code class="language-bash">xfreerdp /v:&lt;ip-address&gt; /u:htb-student /p:'Academy_WinFun!' # Install xfreerdp if needed.</code></pre>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>xfreerdp</code> → A free and open-source RDP client for Linux.</li>
+<li><code>/v:&lt;ip-address&gt;</code> → Specifies the IP address of the target Windows machine.</li>
+<li><code>/u:htb-student</code> → The username used to log in.</li>
+<li><code>/p:'HTB_@cademy_stdnt!'</code> → The password for the user account.</li>
+</ul>
+<p>After successfully authenticating, you will be presented with the desktop of the target Windows machine.</p>
+</div>
+</details>
+
+<h3 id="identify-one-of-the-non-standard-update-services-running">Identify one of the non-standard update services running on the host. Submit the full name of the service executable (not the DisplayName) as your answer.</h3>
+<p>To view all running services, run:</p>
+<div class="codehilite"><pre><span></span><code>Get-Service | Where-Object {$_.Status -eq "Running"}
+</code></pre></div>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>Get-Service</code> → Retrieves all services installed on the system.</li>
+<li><code>|</code> → Passes the service objects to the next command.</li>
+<li><code>Where-Object</code> → Filters objects based on a specified condition.</li>
+<li><code>$_.Status</code> → Refers to the <strong>Status</strong> property of each service.</li>
+<li><code>-eq</code> → Comparison operator that checks for an exact match.</li>
+<li><code>"Running"</code> → Filters the results to display only services that are currently running.</li>
+</ul>
+<p>Review the output and identify a service that is not part of a standard Windows installation.</p>
+<p>If the challenge requires the <strong>service executable name</strong> rather than the <strong>DisplayName</strong>, inspect the service configuration using:</p>
+<div class="codehilite"><pre><span></span><code>sc.exe qc FoxitReaderUpdateService
+</code></pre></div>
+<h4>Command Breakdown</h4>
+<ul>
+<li><code>sc.exe</code> → The <strong>Service Control</strong> utility used to manage and query Windows services.</li>
+<li><code>qc</code> → Stands for <strong>Query Configuration</strong>. Displays the configuration information for the specified service.</li>
+<li><code>FoxitReaderUpdateService</code> → Specifies the service whose configuration will be displayed.</li>
+</ul>
+<p>Locate the <code>BINARY_PATH_NAME</code> field in the output. The executable name at the end of this path is the value to submit as your answer.</p>
+
+<hr style="margin: 2.5rem 0; border: none; border-top: 1px solid rgba(255,255,255,0.1);"/>
+<h3 id="still-stuck-watch-video">Still Stuck? Watch Video</h3>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; margin-top: 1.25rem;">
+  <iframe
+    src="https://www.youtube.com/embed/UTzUuVLnvGg"
+    title="Windows Services and Processes - Windows Fundamentals | HTB Academy Walkthrough"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px;">
+  </iframe>
+</div>
+
+</div>
+</section>
+<footer>
+    built by <span>Muhammad Hashir</span> · devsecknight · Build • Secure • Explore
+  </footer>
+<script src="../../../../js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", () => { document.querySelectorAll("pre code").forEach(el => hljs.highlightElement(el)); });</script>
+<div class="notification-banner">
+<p>Join HTB Academy (Get 20 Cubes Free)</p>
+<a class="btn btn-accent-ghost" href="https://referral.hackthebox.com/mzxKOJt" rel="noopener" target="_blank">Join Now</a>
+</div>
+</body>
+</html>
